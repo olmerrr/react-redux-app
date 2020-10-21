@@ -1,6 +1,6 @@
 import React from 'react';
-
-const counter = ({counter, inc, dec, rnd}) => {
+import { connect } from 'react-redux';
+const Counter = ({counter, inc, dec, rnd}) => {
     return (
         <div className="jumbotron p-4">
             <h2>{counter}</h2>
@@ -16,4 +16,9 @@ const counter = ({counter, inc, dec, rnd}) => {
         </div>
     )
 }
-export default counter;
+const mapStateToProps = (state) => {
+    return {
+        counter: state
+    }
+};
+export default connect(mapStateToProps)(Counter);
