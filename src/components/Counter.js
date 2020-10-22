@@ -14,7 +14,6 @@ const Counter = ({counter, inc, dec, rnd}) => {
             </button>
             <button className="btn btn-primary btn-lg"
                     onClick={rnd}>Random</button>
-
         </div>
     )
 }
@@ -23,15 +22,5 @@ const mapStateToProps = (state) => {
         counter: state
     }
 };
-const mapDispatchToProps = (dispatch) => {
-    const {inc, dec, rnd} = bindActionCreators(actions,dispatch);
-    return {
-        inc,
-        dec,
-        rnd: () => {
-            const randomValue = Math.floor(Math.random() * 10);
-           rnd(randomValue);
-        }
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+export default connect(mapStateToProps, actions)(Counter);
